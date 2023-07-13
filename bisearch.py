@@ -38,8 +38,13 @@ def bisearchR(arr: list, target) -> int:
         elif arr[mid] < target:
             left = mid + 1
         elif arr[mid] == target:
-            left = mid - 1
+            left = mid + 1
     
     if right < 0:
         return -1
     return right if arr[right]==target else -1
+
+if __name__=='__main__':
+    a = [1,3,4,4,4,4,5,7,9]
+    target = 4
+    print(bisearch(a, target), bisearchL(a, target), bisearchR(a, target))

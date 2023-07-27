@@ -1,18 +1,19 @@
 #
-# @lc app=leetcode.cn id=46 lang=python3
+# @lc app=leetcode.cn id=47 lang=python3
 #
-# [46] 全排列
+# [47] 全排列 II
 #
 
 # @lc code=start
 class Solution:
-    def permute(self, nums: List[int]) -> List[List[int]]:
+    def permuteUnique(self, nums: List[int]) -> List[List[int]]:
         n = len(nums)
         if n < 2:
             return [nums]
         used = [False] * n
         path = []
         res = []
+        nums.sort()
 
         def backtrack(nums, path, used):
             if len(path) == n:
@@ -21,6 +22,8 @@ class Solution:
             
             for i in range(n):
                 if used[i]:
+                    continue
+                if i > 0 and nums[i] == nums[i-1] and not used[i-1]:
                     continue
                 path.append(nums[i])
                 used[i] = True
